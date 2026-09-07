@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --font-mono: var(--font-code);
+}
+
+:root {
+  --background: #05080f;
+  --foreground: #e8edf5;
+  --card: #0c1120;
+  --card-foreground: #e8edf5;
+  --primary: #00c8f0;
+  --primary-foreground: #05080f;
+  --secondary: #7b61ff;
+  --secondary-foreground: #ffffff;
+  --muted: #111827;
+  --muted-foreground: #6b7a99;
+  --accent: #00c8f0;
+  --accent-foreground: #05080f;
+  --border: rgba(0, 200, 240, 0.12);
+  --ring: rgba(0, 200, 240, 0.4);
+  --radius: 8px;
+
+  --font-heading: 'Manrope', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  /* Brand extended palette */
+  --cyan-glow: rgba(0, 200, 240, 0.15);
+  --violet-glow: rgba(123, 97, 255, 0.15);
+  --node-size: 5px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 200, 240, 0.2) transparent;
+}
+*::-webkit-scrollbar { width: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(0, 200, 240, 0.2); border-radius: 2px; }
+
+/* Circuit grid pattern */
+.circuit-grid {
+  background-image:
+    linear-gradient(rgba(0, 200, 240, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 240, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glowing node */
+.node {
+  width: var(--node-size);
+  height: var(--node-size);
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px 2px rgba(0, 200, 240, 0.6), 0 0 20px 4px rgba(0, 200, 240, 0.2);
+}
+
+.node-violet {
+  background: var(--secondary);
+  box-shadow: 0 0 8px 2px rgba(123, 97, 255, 0.6), 0 0 20px 4px rgba(123, 97, 255, 0.2);
+}
+
+/* Glow text */
+.glow-text {
+  text-shadow: 0 0 30px rgba(0, 200, 240, 0.4);
+}
+
+/* Card glow on hover */
+.card-hover {
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card-hover:hover {
+  border-color: rgba(0, 200, 240, 0.3);
+  box-shadow: 0 0 0 1px rgba(0, 200, 240, 0.15), 0 8px 32px rgba(0, 200, 240, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #00c8f0 0%, #7b61ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Technical border */
+.tech-border {
+  position: relative;
+  border: 1px solid var(--border);
+}
+.tech-border::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px;
+  width: 12px; height: 12px;
+  border-top: 1px solid var(--primary);
+  border-left: 1px solid var(--primary);
+}
+.tech-border::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; right: -1px;
+  width: 12px; height: 12px;
+  border-bottom: 1px solid var(--primary);
+  border-right: 1px solid var(--primary);
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(0, 200, 240, 0.6), 0 0 20px 4px rgba(0, 200, 240, 0.2); }
+  50% { box-shadow: 0 0 12px 4px rgba(0, 200, 240, 0.9), 0 0 30px 8px rgba(0, 200, 240, 0.35); }
+}
+.node-pulse { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+@keyframes line-trace {
+  0% { stroke-dashoffset: 200; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.float { animation: float 4s ease-in-out infinite; }
+
+/* Float for hero cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Pulse glow for nodes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px 2px rgba(0, 200, 240, 0.6), 0 0 20px 4px rgba(0, 200, 240, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(0, 200, 240, 0.9), 0 0 32px 8px rgba(0, 200, 240, 0.35);
+  }
+}
