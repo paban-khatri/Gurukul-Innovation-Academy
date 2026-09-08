@@ -46,9 +46,10 @@ function CircuitOverlay() {
 }
 
 const FLOAT_CARDS = [
-  { style: { top: "-24px", left: "-24px", animation: "float 5s ease-in-out infinite" }, icon: "🤖", label: "Robotics", sub: "Line-follower · Active", border: "rgba(0,200,240,0.18)", bg: "rgba(0,200,240,0.12)" },
+  { style: { top: "-20px", left: "-16px", animation: "float 5s ease-in-out infinite" }, icon: "🤖", label: "Robotics", sub: "Line-follower · Active", border: "rgba(0,200,240,0.18)", bg: "rgba(0,200,240,0.12)" },
   { style: { top: "-16px", right: "-16px", animation: "float 5.5s ease-in-out infinite 0.8s" }, icon: "🧠", label: "AI Model", sub: "Training · 94.2% acc", border: "rgba(123,97,255,0.18)", bg: "rgba(123,97,255,0.12)" },
-  { style: { bottom: "-24px", right: "-24px", animation: "float 6s ease-in-out infinite 1.6s" }, icon: "📡", label: "IoT Nodes", sub: "24 sensors online", border: "rgba(0,200,240,0.18)", bg: "rgba(0,200,240,0.1)" },
+  { style: { bottom: "-32px", left: "-16px", animation: "float-down 7s ease-in-out infinite 2.4s" }, icon: "🎓", label: "Students Trained", sub: "2,400+ active", border: "rgba(0,230,160,0.18)", bg: "rgba(0,230,160,0.1)" },
+  { style: { bottom: "-32px", right: "-16px", animation: "float-down 6s ease-in-out infinite 1.6s" }, icon: "📡", label: "IoT Nodes", sub: "24 sensors online", border: "rgba(0,200,240,0.18)", bg: "rgba(0,200,240,0.1)" },
 ];
 
 function TechComposition() {
@@ -56,7 +57,7 @@ function TechComposition() {
     <div className="relative w-full h-full min-h-[460px] flex items-center justify-center">
       <div className="absolute top-8 right-8 w-64 h-64 bg-[rgba(0,200,240,0.08)] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-8 left-8 w-48 h-48 bg-[rgba(123,97,255,0.1)] rounded-full blur-3xl pointer-events-none" />
-      <div className="relative w-full max-w-[520px] mx-auto">
+      <div className="relative w-full max-w-[460px] xl:max-w-[520px] mx-auto">
         <div className="relative rounded-2xl overflow-hidden border border-[rgba(0,200,240,0.2)] shadow-[0_0_60px_rgba(0,200,240,0.08),0_24px_80px_rgba(0,0,0,0.6)]" style={{ background: "linear-gradient(135deg,#0c1120,#05080f)" }}>
           <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-[#00c8f0] rounded-tl-2xl z-10" />
           <div className="absolute top-0 right-0 w-5 h-5 border-t border-r border-[#00c8f0] rounded-tr-2xl z-10" />
@@ -66,18 +67,18 @@ function TechComposition() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-transparent to-transparent opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#05080f]/40 via-transparent to-transparent" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(135deg,rgba(0,200,240,0.06),rgba(123,97,255,0.08))" }} />
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+          <div className="absolute bottom-6 left-0 right-0 px-4 flex items-end justify-between pointer-events-none">
             <div className="flex items-center gap-2 bg-[rgba(5,8,15,0.75)] backdrop-blur-md border border-[rgba(0,200,240,0.15)] rounded-xl px-3 py-2">
               <span className="w-2 h-2 rounded-full bg-[#00e6a0] shadow-[0_0_6px_2px_rgba(0,230,160,0.5)]" />
               <span className="text-[11px] font-mono text-[rgba(232,237,245,0.8)]">INNOVATION LAB · ACTIVE</span>
             </div>
             <div className="bg-[rgba(5,8,15,0.75)] backdrop-blur-md border border-[rgba(123,97,255,0.2)] rounded-xl px-3 py-2">
-              <span className="text-[11px] font-mono text-[#a08fff]">KATHMANDU, NEPAL</span>
+              <span className="text-[11px] font-mono text-[#a08fff]">Sindhuli, NEPAL</span>
             </div>
           </div>
         </div>
         {FLOAT_CARDS.map(({ style, icon, label, sub, border, bg }) => (
-          <div key={label} className="absolute bg-[rgba(12,17,32,0.92)] backdrop-blur-md rounded-xl p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)]" style={{ border: `1px solid ${border}`, ...style as React.CSSProperties }}>
+          <div key={label} className="absolute bg-[rgba(12,17,32,0.92)] backdrop-blur-md rounded-xl p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] z-20" style={{ border: `1px solid ${border}`, ...style as React.CSSProperties }}>
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center text-base border" style={{ background: bg, borderColor: border }}>{icon}</div>
               <div>
@@ -87,10 +88,6 @@ function TechComposition() {
             </div>
           </div>
         ))}
-        <div className="absolute -bottom-4 -left-4 bg-[rgba(12,17,32,0.92)] backdrop-blur-md border border-[rgba(0,230,160,0.2)] rounded-xl px-4 py-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)]" style={{ animation: "float 7s ease-in-out infinite 2.4s" }}>
-          <div className="text-xl font-extrabold text-[#00e6a0] leading-none" style={{ fontFamily: "Manrope, sans-serif" }}>2,400+</div>
-          <div className="text-[10px] text-[rgba(107,122,153,1)] font-mono mt-0.5">Students Trained</div>
-        </div>
       </div>
       <div className="absolute top-12 right-12 w-[5px] h-[5px] rounded-full bg-[#00c8f0]" style={{ boxShadow: "0 0 8px 2px rgba(0,200,240,0.6)", animation: "pulse-glow 2.5s ease-in-out infinite" }} />
       <div className="absolute top-1/3 right-4 w-[5px] h-[5px] rounded-full bg-[#7b61ff]" style={{ boxShadow: "0 0 8px 2px rgba(123,97,255,0.6)", animation: "pulse-glow 3s ease-in-out infinite 1s" }} />
@@ -107,37 +104,37 @@ function HeroSection() {
       <CircuitOverlay />
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--background)] to-transparent pointer-events-none z-10" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 pt-28 pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
-          <div className="flex flex-col gap-7 lg:gap-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 pt-24 sm:pt-28 pb-16 w-full">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-20 items-center">
+          <div className="flex flex-col gap-6 sm:gap-7 lg:gap-8">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[rgba(0,200,240,0.25)] bg-[rgba(0,200,240,0.07)] backdrop-blur-sm mb-6">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full border border-[rgba(0,200,240,0.25)] bg-[rgba(0,200,240,0.07)] backdrop-blur-sm mb-5 sm:mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00c8f0]" style={{ boxShadow: "0 0 6px 2px rgba(0,200,240,0.5)", animation: "pulse-glow 2.5s ease-in-out infinite" }} />
-                <span className="text-[11px] font-bold tracking-[0.18em] text-[#00c8f0] uppercase font-mono">Education · Technology · Innovation</span>
+                <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.18em] text-[#00c8f0] uppercase font-mono">Education · Technology · Innovation</span>
               </div>
-              <h1 className="text-5xl sm:text-6xl xl:text-[72px] font-extrabold leading-[1.0] tracking-[-0.025em] text-white mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 800 }}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] font-extrabold leading-[1.05] sm:leading-[1.0] tracking-[-0.025em] text-white mb-3 sm:mb-4" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 800 }}>
                 Learn.{" "}<GradientText>Build.</GradientText>{" "}Innovate.
               </h1>
-              <p className="text-xl sm:text-2xl font-semibold text-[rgba(232,237,245,0.75)] leading-snug" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600 }}>
+              <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-[rgba(232,237,245,0.75)] leading-snug" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 600 }}>
                 Empowering students with Robotics, IoT, AI and STEM through hands-on technology education.
               </p>
             </div>
-            <p className="text-[15px] text-[rgba(107,122,153,1)] leading-[1.75] max-w-lg" style={{ fontFamily: "Inter, sans-serif" }}>
+            <p className="text-[14px] sm:text-[15px] text-[rgba(107,122,153,1)] leading-[1.75] max-w-lg" style={{ fontFamily: "Inter, sans-serif" }}>
               Gurukul Innovation Academy partners with schools and colleges to bring practical technology education into the classroom — while building innovative projects through research, experimentation and prototyping.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <Link to="/programs" className="px-7 py-3.5 rounded-xl text-[14px] font-semibold bg-[#00c8f0] text-[#05080f] hover:brightness-110 hover:shadow-[0_0_28px_rgba(0,200,240,0.45)] active:scale-[0.97] transition-all duration-200 inline-flex items-center gap-2" style={{ fontFamily: "Inter, sans-serif" }}>
+              <Link to="/programs" className="w-full sm:w-auto justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl text-[14px] font-semibold bg-[#00c8f0] text-[#05080f] hover:brightness-110 hover:shadow-[0_0_28px_rgba(0,200,240,0.45)] active:scale-[0.97] transition-all duration-200 inline-flex items-center gap-2" style={{ fontFamily: "Inter, sans-serif" }}>
                 Explore Programs <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
-              <Link to="/partners" className="px-7 py-3.5 rounded-xl text-[14px] font-semibold border border-[rgba(0,200,240,0.3)] text-[#00c8f0] hover:bg-[rgba(0,200,240,0.08)] active:scale-[0.97] transition-all duration-200" style={{ fontFamily: "Inter, sans-serif" }}>
+              <Link to="/partners" className="w-full sm:w-auto justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl text-[14px] font-semibold border border-[rgba(0,200,240,0.3)] text-[#00c8f0] hover:bg-[rgba(0,200,240,0.08)] active:scale-[0.97] transition-all duration-200 inline-flex items-center" style={{ fontFamily: "Inter, sans-serif" }}>
                 Partner With Us
               </Link>
             </div>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 border-t border-[rgba(255,255,255,0.06)]">
               {[{ value: "2,400+", label: "Students" }, { value: "48", label: "Partner Schools" }, { value: "120+", label: "Projects Built" }].map(({ value, label }) => (
                 <div key={label} className="flex items-center gap-2">
-                  <span className="text-base font-extrabold text-white" style={{ fontFamily: "Manrope, sans-serif" }}>{value}</span>
-                  <span className="text-[12px] text-[rgba(107,122,153,1)]" style={{ fontFamily: "Inter, sans-serif" }}>{label}</span>
+                  <span className="text-sm sm:text-base font-extrabold text-white" style={{ fontFamily: "Manrope, sans-serif" }}>{value}</span>
+                  <span className="text-[11px] sm:text-[12px] text-[rgba(107,122,153,1)]" style={{ fontFamily: "Inter, sans-serif" }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -147,13 +144,39 @@ function HeroSection() {
           </div>
         </div>
 
-        {/* Mobile hero image */}
-        <div className="mt-10 lg:hidden rounded-2xl overflow-hidden border border-[rgba(0,200,240,0.15)] relative">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop&auto=format&q=85" alt="Technology laboratory" className="w-full object-cover opacity-70" style={{ aspectRatio: "16/9" }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-transparent to-transparent opacity-60" />
-          <div className="absolute bottom-3 left-3 flex items-center gap-2 bg-[rgba(5,8,15,0.8)] backdrop-blur-md border border-[rgba(0,200,240,0.15)] rounded-xl px-3 py-2">
-            <span className="w-2 h-2 rounded-full bg-[#00e6a0]" style={{ boxShadow: "0 0 6px 2px rgba(0,230,160,0.5)" }} />
-            <span className="text-[11px] font-mono text-[rgba(232,237,245,0.8)]">INNOVATION LAB · ACTIVE</span>
+        {/* Mobile & Tablet hero showcase */}
+        <div className="mt-8 sm:mt-10 lg:hidden flex flex-col gap-3">
+          <div className="rounded-2xl overflow-hidden border border-[rgba(0,200,240,0.18)] shadow-[0_12px_40px_rgba(0,0,0,0.6)] relative" style={{ background: "linear-gradient(135deg,#0c1120,#05080f)" }}>
+            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#00c8f0] rounded-tl-2xl z-10" />
+            <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#00c8f0] rounded-tr-2xl z-10" />
+            <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#7b61ff] rounded-bl-2xl z-10" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#7b61ff] rounded-br-2xl z-10" />
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop&auto=format&q=85" alt="Technology laboratory" className="w-full object-cover opacity-70" style={{ aspectRatio: "16/9" }} />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#05080f] via-transparent to-transparent opacity-70" />
+            <div className="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex items-end justify-between gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 bg-[rgba(5,8,15,0.82)] backdrop-blur-md border border-[rgba(0,200,240,0.15)] rounded-xl px-2.5 py-1.5 sm:px-3 sm:py-2">
+                <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#00e6a0]" style={{ boxShadow: "0 0 6px 2px rgba(0,230,160,0.5)" }} />
+                <span className="text-[10px] sm:text-[11px] font-mono text-[rgba(232,237,245,0.85)]">INNOVATION LAB · ACTIVE</span>
+              </div>
+              <div className="bg-[rgba(5,8,15,0.82)] backdrop-blur-md border border-[rgba(123,97,255,0.2)] rounded-xl px-2.5 py-1.5 sm:px-3 sm:py-2">
+                <span className="text-[10px] sm:text-[11px] font-mono text-[#a08fff]">Sindhuli, NEPAL</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile floating cards grid */}
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
+            {FLOAT_CARDS.map(({ icon, label, sub, border, bg }) => (
+              <div key={label} className="bg-[rgba(12,17,32,0.85)] backdrop-blur-md rounded-xl p-2.5 sm:p-3 border shadow-md flex items-center gap-2.5" style={{ borderColor: border }}>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-sm sm:text-base border shrink-0" style={{ background: bg, borderColor: border }}>
+                  {icon}
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[10.5px] sm:text-[11px] font-semibold text-white leading-tight truncate mb-0.5" style={{ fontFamily: "Manrope, sans-serif" }}>{label}</p>
+                  <p className="text-[9.5px] sm:text-[10px] text-[rgba(107,122,153,1)] font-mono truncate">{sub}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -189,10 +212,10 @@ function useCountUp(target: number, started: boolean) {
 }
 
 const STATS = [
-  { value: 2400, suffix: "+", label: "Students Trained",      accent: "#00c8f0" },
-  { value: 48,   suffix: "",  label: "Partner Schools",        accent: "#7b61ff" },
-  { value: 120,  suffix: "+", label: "Projects Built",         accent: "#00e6a0" },
-  { value: 7,    suffix: "",  label: "Districts Reached",      accent: "#ffa040" },
+  { value: 2400, suffix: "+", label: "Students Trained", accent: "#00c8f0" },
+  { value: 48, suffix: "", label: "Partner Schools", accent: "#7b61ff" },
+  { value: 120, suffix: "+", label: "Projects Built", accent: "#00e6a0" },
+  { value: 7, suffix: "", label: "Districts Reached", accent: "#ffa040" },
 ];
 
 function StatItem({ stat, started }: { stat: typeof STATS[0]; started: boolean }) {
@@ -252,12 +275,12 @@ function ApproachSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {highlights.map(({ icon, title, description, color, glow, border }, i) => (
-            <div key={title} className="group relative rounded-2xl p-7 bg-[var(--card)] border transition-all duration-300 hover:-translate-y-1.5 cursor-default overflow-hidden" style={{ borderColor: border.replace("0.18","0.12") }}>
+            <div key={title} className="group relative rounded-2xl p-7 bg-[var(--card)] border transition-all duration-300 hover:-translate-y-1.5 cursor-default overflow-hidden" style={{ borderColor: border.replace("0.18", "0.12") }}>
               <div className="absolute top-0 left-0 w-10 h-10 border-t border-l rounded-tl-2xl" style={{ borderColor: color + "50" }} />
               <div className="absolute bottom-0 right-0 w-10 h-10 border-b border-r rounded-br-2xl" style={{ borderColor: color + "50" }} />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: `radial-gradient(ellipse at top left,${glow},transparent 70%)` }} />
               <div className="absolute top-5 right-5 text-[11px] font-mono opacity-20" style={{ color }}>0{i + 1}</div>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 border transition-all group-hover:scale-110" style={{ background: glow, borderColor: border.replace("0.18","0.14") }}>{icon}</div>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-5 border transition-all group-hover:scale-110" style={{ background: glow, borderColor: border.replace("0.18", "0.14") }}>{icon}</div>
               <h3 className="text-[16px] font-bold text-white mb-2.5" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700 }}>{title}</h3>
               <p className="text-[13.5px] text-[rgba(107,122,153,1)] leading-[1.7]" style={{ fontFamily: "Inter, sans-serif" }}>{description}</p>
               <div className="absolute bottom-0 left-7 right-7 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: `linear-gradient(90deg,transparent,${color},transparent)` }} />
@@ -298,11 +321,11 @@ function ProgramsPreview() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {PROGRAM_PREVIEWS.map((p) => (
-            <Link to="/programs" key={p.title} className="group relative rounded-2xl p-6 border flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg" style={{ background: "rgba(12,17,32,0.7)", borderColor: p.border.replace("0.18","0.12") }}
+            <Link to="/programs" key={p.title} className="group relative rounded-2xl p-6 border flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg" style={{ background: "rgba(12,17,32,0.7)", borderColor: p.border.replace("0.18", "0.12") }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = p.border; (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 1px ${p.accent}15, 0 20px 48px rgba(0,0,0,0.5), 0 0 32px ${p.bg}`; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = p.border.replace("0.18","0.12"); (e.currentTarget as HTMLElement).style.boxShadow = ""; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = p.border.replace("0.18", "0.12"); (e.currentTarget as HTMLElement).style.boxShadow = ""; }}
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl border group-hover:scale-110 transition-transform" style={{ background: p.bg, borderColor: p.border.replace("0.18","0.14") }}>{p.icon}</div>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl border group-hover:scale-110 transition-transform" style={{ background: p.bg, borderColor: p.border.replace("0.18", "0.14") }}>{p.icon}</div>
               <div>
                 <p className="text-[10px] font-mono font-bold tracking-widest uppercase mb-1" style={{ color: p.accent + "90" }}>{p.sub}</p>
                 <h3 className="text-[16px] font-bold text-white mb-2" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700 }}>{p.title}</h3>
@@ -370,35 +393,53 @@ function LabTeaser() {
           {/* Right — terminal preview */}
           <div className="relative">
             <div className="rounded-2xl overflow-hidden border" style={{ background: "#050810", borderColor: "rgba(0,200,240,0.15)", boxShadow: "0 0 0 1px rgba(0,200,240,0.05),0 32px 80px rgba(0,0,0,0.8)" }}>
-              <div className="flex items-center gap-3 px-4 py-3 border-b" style={{ borderColor: "rgba(0,200,240,0.1)", background: "rgba(0,200,240,0.03)" }}>
-                <div className="flex gap-1.5">
+              <div className="flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2.5 sm:py-3 border-b" style={{ borderColor: "rgba(0,200,240,0.1)", background: "rgba(0,200,240,0.03)" }}>
+                <div className="flex gap-1.5 shrink-0">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
                 </div>
-                <span className="text-[11px] font-mono text-[rgba(107,122,153,0.7)] flex-1 text-center">gurukul-lab ~ innovation-terminal</span>
+                <span className="text-[10px] sm:text-[11px] font-mono text-[rgba(107,122,153,0.7)] flex-1 text-center truncate">gurukul-lab ~ innovation-terminal</span>
               </div>
-              <div className="p-5 flex flex-col gap-2 min-h-[200px]">
+              <div className="p-4 sm:p-5 md:p-6 flex flex-col gap-2.5 sm:gap-3 min-h-[280px] sm:min-h-[300px]">
                 {[
                   { prompt: "$ cd /lab/projects/active", color: "rgba(0,200,240,0.5)" },
                   { prompt: "$ ls -la --sort=modified", color: "rgba(0,200,240,0.5)" },
                 ].map(({ prompt, color }) => (
-                  <div key={prompt} className="flex items-start gap-2 text-[12px] font-mono">
+                  <div key={prompt} className="flex items-start gap-2 text-[11px] sm:text-[12px] font-mono">
                     <span style={{ color }}>{prompt.split(" ")[0]}</span>
                     <span style={{ color: "rgba(232,237,245,0.65)" }}>{prompt.slice(prompt.indexOf(" ") + 1)}</span>
                   </div>
                 ))}
-                <div className="flex flex-col gap-1.5 pl-4 border-l border-[rgba(0,200,240,0.12)] my-1">
-                  {[{ name: "autonomous-robot-v3/", c: "#00c8f0" }, { name: "iot-mesh-network/", c: "#00e6a0" }, { name: "edge-ai-vision/", c: "#7b61ff" }].map(({ name, c }) => (
-                    <div key={name} className="flex items-center gap-3 text-[11px] font-mono">
+                <div className="flex flex-col gap-1.5 pl-3 sm:pl-4 border-l border-[rgba(0,200,240,0.12)] my-1">
+                  {[
+                    { name: "autonomous-robot-v3/", size: "4.2MB", mod: "2s ago", c: "#00c8f0" },
+                    { name: "iot-mesh-network/", size: "1.8MB", mod: "14m ago", c: "#00e6a0" },
+                    { name: "edge-ai-vision/", size: "6.1MB", mod: "2h ago", c: "#7b61ff" },
+                    { name: "smart-agri-hydroponics/", size: "940KB", mod: "1d ago", c: "#ffa040" },
+                  ].map(({ name, size, mod, c }) => (
+                    <div key={name} className="flex items-center gap-2 sm:gap-3 text-[10.5px] sm:text-[11px] font-mono">
                       <span style={{ color: c }}>▸</span>
-                      <span style={{ color: "rgba(232,237,245,0.7)" }}>{name}</span>
+                      <span className="truncate" style={{ color: "rgba(232,237,245,0.75)", flex: 1 }}>{name}</span>
+                      <span className="shrink-0" style={{ color: "rgba(107,122,153,0.7)" }}>{size}</span>
+                      <span className="shrink-0 hidden sm:inline" style={{ color: "rgba(107,122,153,0.45)", minWidth: 48, textAlign: "right" }}>{mod}</span>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#00e6a0]" style={{ boxShadow: "0 0 6px 2px rgba(0,230,160,0.5)", animation: "pulse-glow 2s ease-in-out infinite" }} />
-                  <span className="text-[11px] font-mono" style={{ color: "rgba(0,230,160,0.8)" }}>lab-session active · 3 contributors online</span>
+                <div className="flex items-start gap-2 text-[11px] sm:text-[12px] font-mono pt-1">
+                  <span style={{ color: "rgba(0,200,240,0.5)" }}>$</span>
+                  <span style={{ color: "rgba(232,237,245,0.65)" }}>git status --short</span>
+                </div>
+                <div className="text-[10.5px] sm:text-[11px] font-mono pl-3 sm:pl-4 flex flex-col gap-0.5 text-[#00e6a0]">
+                  <span>M  src/navigation/slam_core.py</span>
+                  <span>A  models/yolov8_custom.pt</span>
+                </div>
+                <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 pt-3 mt-auto border-t border-[rgba(0,200,240,0.08)]">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00e6a0] shrink-0" style={{ boxShadow: "0 0 6px 2px rgba(0,230,160,0.5)", animation: "pulse-glow 2s ease-in-out infinite" }} />
+                    <span className="text-[10px] sm:text-[11px] font-mono truncate" style={{ color: "rgba(0,230,160,0.85)" }}>lab-session active · 3 online</span>
+                  </div>
+                  <span className="text-[9.5px] sm:text-[10px] font-mono text-[rgba(107,122,153,0.5)] shrink-0">Sindhuli node</span>
                 </div>
               </div>
             </div>
