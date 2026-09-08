@@ -1,38 +1,43 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router";
-import Logo from "./Logo";
+import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router"
+import Logo from "./Logo"
 
 const NAV_LINKS = [
-  { label: "Home",           to: "/" },
-  { label: "About",          to: "/about" },
-  { label: "Programs",       to: "/programs" },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Programs", to: "/programs" },
   { label: "Innovation Lab", to: "/innovation-lab" },
-  { label: "Projects",       to: "/projects" },
-  { label: "Partners",       to: "/partners" },
-  { label: "Contact",        to: "/contact" },
-];
+  { label: "Projects", to: "/projects" },
+  { label: "Partners", to: "/partners" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "Contact", to: "/contact" },
+]
 
 export default function Navigation() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
-  const { pathname }              = useLocation();
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+    document.body.style.overflow = menuOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [menuOpen])
 
   // Close drawer on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [pathname])
 
   const isActive = (to: string) =>
-    to === "/" ? pathname === "/" : pathname.startsWith(to);
+    to === "/" ? pathname === "/" : pathname.startsWith(to)
 
   return (
     <>
@@ -41,7 +46,9 @@ export default function Navigation() {
         style={{
           background: scrolled ? "rgba(5,8,15,0.88)" : "transparent",
           backdropFilter: scrolled ? "blur(20px) saturate(1.4)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(0,200,240,0.1)" : "1px solid transparent",
+          borderBottom: scrolled
+            ? "1px solid rgba(0,200,240,0.1)"
+            : "1px solid transparent",
           boxShadow: scrolled ? "0 4px 32px rgba(0,0,0,0.4)" : "none",
         }}
       >
@@ -49,27 +56,32 @@ export default function Navigation() {
           <Logo />
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
             {NAV_LINKS.map(({ label, to }) => (
               <Link
                 key={to}
                 to={to}
-                className="px-3.5 py-2 rounded-lg text-[13px] font-medium transition-all duration-150"
+                className="px-2.5 xl:px-3.5 py-2 rounded-lg text-[13px] font-medium transition-all duration-150"
                 style={{
                   fontFamily: "Inter, sans-serif",
                   color: isActive(to) ? "#00c8f0" : "rgba(232,237,245,0.6)",
-                  background: isActive(to) ? "rgba(0,200,240,0.08)" : "transparent",
+                  background: isActive(to)
+                    ? "rgba(0,200,240,0.08)"
+                    : "transparent",
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive(to)) {
-                    (e.currentTarget as HTMLElement).style.color = "white";
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.05)";
+                    ;(e.currentTarget as HTMLElement).style.color = "white"
+                    ;(e.currentTarget as HTMLElement).style.background =
+                      "rgba(255,255,255,0.05)"
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive(to)) {
-                    (e.currentTarget as HTMLElement).style.color = "rgba(232,237,245,0.6)";
-                    (e.currentTarget as HTMLElement).style.background = "transparent";
+                    ;(e.currentTarget as HTMLElement).style.color =
+                      "rgba(232,237,245,0.6)"
+                    ;(e.currentTarget as HTMLElement).style.background =
+                      "transparent"
                   }
                 }}
               >
@@ -95,9 +107,21 @@ export default function Navigation() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-[6.5px]" : ""}`} />
-            <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""}`} />
+            <span
+              className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${
+                menuOpen ? "rotate-45 translate-y-[6.5px]" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[1.5px] bg-white transition-all duration-200 ${
+                menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+              }`}
+            />
           </button>
         </div>
       </header>
@@ -105,11 +129,17 @@ export default function Navigation() {
       {/* Mobile drawer */}
       <div
         className="fixed inset-0 z-40 lg:hidden transition-all duration-300"
-        style={{ opacity: menuOpen ? 1 : 0, pointerEvents: menuOpen ? "auto" : "none" }}
+        style={{
+          opacity: menuOpen ? 1 : 0,
+          pointerEvents: menuOpen ? "auto" : "none",
+        }}
       >
         <div
           className="absolute inset-0"
-          style={{ background: "rgba(5,8,15,0.7)", backdropFilter: "blur(4px)" }}
+          style={{
+            background: "rgba(5,8,15,0.7)",
+            backdropFilter: "blur(4px)",
+          }}
           onClick={() => setMenuOpen(false)}
         />
         <div
@@ -120,7 +150,10 @@ export default function Navigation() {
             transform: menuOpen ? "translateX(0)" : "translateX(100%)",
           }}
         >
-          <div className="h-16 flex items-center px-5" style={{ borderBottom: "1px solid rgba(0,200,240,0.08)" }}>
+          <div
+            className="h-16 flex items-center px-5"
+            style={{ borderBottom: "1px solid rgba(0,200,240,0.08)" }}
+          >
             <Logo />
           </div>
           <nav className="flex flex-col p-4 gap-1 flex-1 overflow-y-auto">
@@ -132,14 +165,19 @@ export default function Navigation() {
                 style={{
                   fontFamily: "Inter, sans-serif",
                   color: isActive(to) ? "#00c8f0" : "rgba(232,237,245,0.7)",
-                  background: isActive(to) ? "rgba(0,200,240,0.08)" : "transparent",
+                  background: isActive(to)
+                    ? "rgba(0,200,240,0.08)"
+                    : "transparent",
                 }}
               >
                 {label}
               </Link>
             ))}
           </nav>
-          <div className="p-4" style={{ borderTop: "1px solid rgba(0,200,240,0.08)" }}>
+          <div
+            className="p-4"
+            style={{ borderTop: "1px solid rgba(0,200,240,0.08)" }}
+          >
             <Link
               to="/partners"
               className="block w-full py-3.5 rounded-xl text-[14px] font-semibold text-center bg-[#00c8f0] text-[#05080f] hover:brightness-110 transition-all"
@@ -151,5 +189,5 @@ export default function Navigation() {
         </div>
       </div>
     </>
-  );
+  )
 }
