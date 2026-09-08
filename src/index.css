@@ -171,3 +171,9 @@ body,
   50% { transform: translateY(-8px); }
 }
 .float { animation: float 4s ease-in-out infinite; }
+
+@keyframes float-down {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(8px); }
+}
+.float-down { animation: float-down 4s ease-in-out infinite; }
