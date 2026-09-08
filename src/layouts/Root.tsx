@@ -12,9 +12,9 @@ export default function Root() {
   }, [pathname]);
 
   return (
-    <div className="min-h-full flex flex-col bg-[var(--background)]">
+    <div className="min-h-screen w-full flex flex-col bg-[var(--background)] overflow-x-hidden">
       <Navigation />
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         <Outlet />
       </main>
       <Footer />
