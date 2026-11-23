@@ -364,7 +364,7 @@ export default function Contact() {
                   {/* Phone + Institution */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Field label="Phone Number" id="phone">
-                      <input id="phone" type="tel" placeholder="+977 9864695384" value={form.phone} onChange={set("phone")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
+                      <input id="phone" type="tel" placeholder="+977 98XXXXXXXX" value={form.phone} onChange={set("phone")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
                     </Field>
                     <Field label="School / Institution" id="institution">
                       <input id="institution" type="text" placeholder="Your school or college" value={form.institution} onChange={set("institution")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
