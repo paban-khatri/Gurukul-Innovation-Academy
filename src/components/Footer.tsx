@@ -183,7 +183,7 @@ export default function Footer() {
         {/* ── Bottom bar ── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-8 text-[12px]" style={{ fontFamily: "Inter, sans-serif" }}>
           <p className="text-[rgba(107,122,153,0.6)] text-center sm:text-left">
-            © {year} Gurukul Innovation Academy. All rights reserved. · Kathmandu, Nepal
+            © {year} Gurukul Innovation Academy. All rights reserved. · Sindhuli, Nepal
           </p>
           <div className="flex items-center gap-4 text-[rgba(107,122,153,0.5)]">
             <span className="flex items-center gap-1.5">

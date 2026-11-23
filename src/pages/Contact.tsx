@@ -67,7 +67,8 @@ const INFO = [
       </svg>
     ),
     label: "Email",
-    value: "hello@gurukul.com.np",
+    value: "paban.khatri67@gmail.com",
+    href: "mailto:paban.khatri67@gmail.com",
     sub: "Response within 24 hours",
   },
   {
@@ -78,7 +79,8 @@ const INFO = [
       </svg>
     ),
     label: "Phone",
-    value: "+977 98XXXXXXXX",
+    value: "+977 9864695384",
+    href: "tel:+9779864695384",
     sub: "Sun–Fri, 10am–6pm NPT",
   },
   {
@@ -89,7 +91,7 @@ const INFO = [
       </svg>
     ),
     label: "Location",
-    value: "Kathmandu, Nepal",
+    value: "Sindhuli, Nepal",
     sub: "Serving schools across Nepal",
   },
 ];
@@ -208,22 +210,39 @@ export default function Contact() {
 
               {/* Contact info cards */}
               <div className="flex flex-col gap-3">
-                {INFO.map(({ icon, label, value, sub }) => (
-                  <div
-                    key={label}
-                    className="flex items-start gap-4 p-5 rounded-2xl border transition-all duration-250 group hover:-translate-y-0.5"
-                    style={{ background: "rgba(12,17,32,0.7)", borderColor: "rgba(0,200,240,0.1)" }}
-                  >
-                    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border" style={{ background: "rgba(0,200,240,0.07)", borderColor: "rgba(0,200,240,0.15)" }}>
-                      {icon}
+                {INFO.map(({ icon, label, value, sub, href }) => {
+                  const cardContent = (
+                    <>
+                      <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border" style={{ background: "rgba(0,200,240,0.07)", borderColor: "rgba(0,200,240,0.15)" }}>
+                        {icon}
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-mono uppercase tracking-wider text-[rgba(107,122,153,0.7)] mb-0.5">{label}</p>
+                        <p className="text-[14px] font-semibold text-white mb-0.5 group-hover:text-[#00c8f0] transition-colors" style={{ fontFamily: "Inter, sans-serif" }}>{value}</p>
+                        <p className="text-[12px] text-[rgba(107,122,153,0.6)]" style={{ fontFamily: "Inter, sans-serif" }}>{sub}</p>
+                      </div>
+                    </>
+                  );
+
+                  return href ? (
+                    <a
+                      key={label}
+                      href={href}
+                      className="flex items-start gap-4 p-5 rounded-2xl border transition-all duration-250 group hover:-translate-y-0.5 hover:border-[rgba(0,200,240,0.3)] hover:bg-[rgba(0,200,240,0.03)] cursor-pointer"
+                      style={{ background: "rgba(12,17,32,0.7)", borderColor: "rgba(0,200,240,0.1)" }}
+                    >
+                      {cardContent}
+                    </a>
+                  ) : (
+                    <div
+                      key={label}
+                      className="flex items-start gap-4 p-5 rounded-2xl border transition-all duration-250 group hover:-translate-y-0.5"
+                      style={{ background: "rgba(12,17,32,0.7)", borderColor: "rgba(0,200,240,0.1)" }}
+                    >
+                      {cardContent}
                     </div>
-                    <div>
-                      <p className="text-[10px] font-mono uppercase tracking-wider text-[rgba(107,122,153,0.7)] mb-0.5">{label}</p>
-                      <p className="text-[14px] font-semibold text-white mb-0.5" style={{ fontFamily: "Inter, sans-serif" }}>{value}</p>
-                      <p className="text-[12px] text-[rgba(107,122,153,0.6)]" style={{ fontFamily: "Inter, sans-serif" }}>{sub}</p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Divider */}
@@ -345,7 +364,7 @@ export default function Contact() {
                   {/* Phone + Institution */}
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Field label="Phone Number" id="phone">
-                      <input id="phone" type="tel" placeholder="+977 98XXXXXXXX" value={form.phone} onChange={set("phone")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
+                      <input id="phone" type="tel" placeholder="+977 9864695384" value={form.phone} onChange={set("phone")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
                     </Field>
                     <Field label="School / Institution" id="institution">
                       <input id="institution" type="text" placeholder="Your school or college" value={form.institution} onChange={set("institution")} style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
