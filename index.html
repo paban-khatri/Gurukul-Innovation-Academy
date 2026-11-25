@@ -1,10 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gurukul Innovation Academy</title>
-    <meta name="description" content="Empowering students and educators in Nepal with hands-on learning in robotics, IoT, AI, and STEM through innovative project-based education." />
+    <meta
+      name="description"
+      content="Empowering students and educators in Nepal with hands-on learning in robotics, IoT, AI, and STEM through innovative project-based education."
+    />
+    <script>
+      (function () {
+        var STORAGE_KEY = "gia-theme";
+        var VALID = ["dark", "light", "midnight", "system"];
+        var pref = "dark";
+        try {
+          var stored = window.localStorage.getItem(STORAGE_KEY);
+          if (stored && VALID.indexOf(stored) !== -1) {
+            pref = stored;
+          }
+        } catch (e) {}
+        var resolved = pref;
+        if (pref === "system") {
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          resolved = prefersDark ? "dark" : "light";
+        }
+        var root = document.documentElement;
+        root.setAttribute("data-theme", resolved);
+        root.setAttribute("data-theme-preference", pref);
+        root.style.colorScheme = resolved === "light" ? "light" : "dark";
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

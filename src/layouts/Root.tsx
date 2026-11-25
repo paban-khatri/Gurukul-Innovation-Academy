@@ -12,7 +12,13 @@ export default function Root() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[var(--background)] overflow-x-hidden">
+    <div
+      className="min-h-screen w-full flex flex-col overflow-x-hidden"
+      style={{
+        backgroundColor: "var(--bg-primary)",
+        color: "var(--text-primary)",
+      }}
+    >
       <Navigation />
       <main className="flex-1 w-full">
         <Outlet />
